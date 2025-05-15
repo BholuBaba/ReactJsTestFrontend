@@ -1,44 +1,25 @@
-//import logo from './logo.svg';
-import './App.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Home from './Components/Home';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
+import Root from './Components/Root';
+import Users,{ loader as usersLoader }  from './Components/Users';
+
+const router = createBrowserRouter([
+  {
+    path : '/', id: 'root', element : <Root/>,
+    children: [
+      { index: true, element: <Home />},
+      { path: 'users', element: <Users />, loader : usersLoader},
+      { path: 'login', element: <Login />},
+      { path: 'signup', element: <Signup /> }
+    ]
+  }
+]);
 
 function App() {
-
-  async function sendLoginRquest(login) {
-    //console.log(login);
-    const response = await fetch('https://localhost:7244/api/Account/login', {
-      method: 'POST',
-      body: JSON.stringify(login),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    //const data = await response.json();
-    const data = await response.text();
-    console.log(data);
-  }
-
-  async function sendSignupRquest(signup) {
-    //console.log(signup);
-    const response = await fetch('https://localhost:7244/api/Account/signup', {
-      method: 'POST',
-      body: JSON.stringify(signup),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    const data = await response.text();
-    console.log(data);
-
-  }
-
   return (
-    <div className="App">
-      <h2>Home Page</h2>
-      <Login onLogin={sendLoginRquest}/>       
-      <Signup onSignup={sendSignupRquest} />
-    </div>
+    <RouterProvider router={router} />
   );
 }
 
