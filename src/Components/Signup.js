@@ -23,7 +23,6 @@ function Signup() {
     }
 
     async function sendSignupRequest(signup) {
-        //console.log(signup);
         const response = await fetch('https://localhost:7244/api/Account/signup', {
             method: 'POST',
             body: JSON.stringify(signup),
@@ -32,9 +31,6 @@ function Signup() {
             }
         });
         const data = await response.text();
-        console.log(data);
-
-        //return redirect('/users');
         navigate('/users');
     }
 

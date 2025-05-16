@@ -4,6 +4,7 @@ import Login from './Components/Login';
 import Signup from './Components/Signup';
 import Root from './Components/Root';
 import Users,{ loader as usersLoader }  from './Components/Users';
+import TestApi from './Components/TestApi';
 
 const router = createBrowserRouter([
   {
@@ -12,7 +13,8 @@ const router = createBrowserRouter([
       { index: true, element: <Home />},
       { path: 'users', element: <Users />, loader : usersLoader},
       { path: 'login', element: <Login />},
-      { path: 'signup', element: <Signup /> }
+      { path: 'signup', element: <Signup /> },
+      { path: 'test', element: <TestApi /> }
     ]
   }
 ]);

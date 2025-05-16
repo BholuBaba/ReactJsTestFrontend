@@ -5,30 +5,27 @@ import classes from './Form.module.css';
 
 function Users() {
     const users = useLoaderData();
-    //console.log(users);
+
     return (
         <Fragment>
-            {/* <div style={{textAlign: 'center'}}> */}
-            {/* <h1>All Users</h1>             */}
-                <table className={classes.center}>
-                    <thead className="thead-light">
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Email</th>
+            <table className={classes.center}>
+                <thead className="thead-light">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {users.map((user) => (
+                        <tr key={user.id}>
+                            <td>{user.id}</td>
+                            <td>{user.name}</td>
+                            <td>{user.email}</td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        {users.map((user) => (
-                            <tr key={user.id}>
-                                <td>{user.id}</td>
-                                <td>{user.name}</td>
-                                <td>{user.email}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            {/* </div> */}
+                    ))}
+                </tbody>
+            </table>
         </Fragment>
     )
 }

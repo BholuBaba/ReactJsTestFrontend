@@ -16,6 +16,9 @@ function MainNavigation() {
                     <li>
                         <NavLink to='/signup' className="nav-link">Signup</NavLink>
                     </li>
+                    <li>
+                        <NavLink to='/test' className="nav-link">Test</NavLink>
+                    </li>
                 </ul>
             </nav>
         </header>

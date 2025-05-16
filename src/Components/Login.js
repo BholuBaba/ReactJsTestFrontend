@@ -22,7 +22,6 @@ function Login() {
             email: inputEmailref.current.value,
             password: inputPasswordref.current.value
         };
-        //props.onLogin(login);
         sendLoginRequest(login);
     }
 
